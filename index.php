@@ -10,6 +10,14 @@
 </head>
 
 <body>
+  <?php 
+  $conn = new mysqli("localhost","root","",$database_name);
+  // Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+  ?>
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
