@@ -10,14 +10,7 @@
 </head>
 
 <body>
-  <?php 
-  $conn = new mysqli("localhost","root","",$database_name);
-  // Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
-  ?>
+
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
@@ -110,6 +103,14 @@ echo "Connected successfully";
       <!--  Header End -->
       <div class="container-fluid">
         <!--  Row 1 -->
+        <?php 
+  include 'pass.php';
+  $conn = new mysqli("localhost","root","",$database);
+  // Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}           
+  ?>
         <div class="row">
           <!--  coloum 1 -->
           <div class="col-lg-4">
@@ -121,7 +122,20 @@ echo "Connected successfully";
                     <h5 class="card-title mb-9 fw-semibold">Общий остаток </h5>
                     <div class="row align-items-center">
                       <div class="col-8">
-                        <h4 class="fw-semibold mb-3">$36,358</h4>
+                      <?php 
+                        $allsum= "SELECT summa FROM main_table";
+                        $allsumresult = $conn->query($allsum);
+                        $allsumvalue = 0;
+                        if ($allsumresult->num_rows > 0) {
+                          // output data of each row
+                          while($allsumrow = $allsumresult->fetch_assoc()) {
+                          $allsumvalue=$allsumvalue+$allsumrow["summa"];
+                          }
+                        } else {
+                          echo "0 results";
+                        }
+                        ?>
+                        <h4 class="fw-semibold mb-3"><?php echo $allsumvalue ?></h4>
                         <div class="d-flex align-items-center mb-3">
                           <span
                             class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
@@ -162,8 +176,19 @@ echo "Connected successfully";
                   <div class="card-body p-4">
                     <h5 class="card-title mb-9 fw-semibold">Остаток на складе 3308</h5>
                     <div class="row align-items-center">
-                      <div class="col-8">
-                        <h4 class="fw-semibold mb-3">$36,358</h4>
+                      <div class="col-8">  
+                      <?php 
+                        $allsum3308= "SELECT summa FROM main_table WHERE sklad='3308'";
+                        $allsumresult3308 = $conn->query($allsum3308);
+                        $allsumvalue3308 = 0;
+                        if ($allsumresult3308->num_rows > 0) {
+                          // output data of each row
+                          while($allsumrow3308 = $allsumresult3308->fetch_assoc()) {
+                          $allsumvalue3308=$allsumvalue3308+$allsumrow3308["summa"];
+                          }
+                        } 
+                        ?>                     
+                        <h4 class="fw-semibold mb-3"><?php echo $allsumvalue3308 ?></h4>
                         <div class="d-flex align-items-center mb-3">
                           <span
                             class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
@@ -205,7 +230,18 @@ echo "Connected successfully";
                               <h5 class="card-title mb-9 fw-semibold">Остаток на складе 3318</h5>
                               <div class="row align-items-center">
                                 <div class="col-8">
-                                  <h4 class="fw-semibold mb-3">$36,358</h4>
+                                <?php 
+                        $allsum3318= "SELECT summa FROM main_table WHERE sklad='3318'";
+                        $allsumresult3318 = $conn->query($allsum3318);
+                        $allsumvalue3318 = 0;
+                        if ($allsumresult3318->num_rows > 0) {
+                          // output data of each row
+                          while($allsumrow3318 = $allsumresult3318->fetch_assoc()) {
+                          $allsumvalue3318=$allsumvalue3318+$allsumrow3318["summa"];
+                          }
+                        } 
+                        ?> 
+                                  <h4 class="fw-semibold mb-3"><?php echo $allsumvalue3318 ?></h4>
                                   <div class="d-flex align-items-center mb-3">
                                     <span
                                       class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
@@ -265,7 +301,7 @@ echo "Connected successfully";
                 <!-- Yearly Breakup -->
                 <div class="card overflow-hidden">
                   <div class="card-body p-4">
-                    <h5 class="card-title mb-9 fw-semibold">Остаток</h5>
+                    <h5 class="card-title mb-9 fw-semibold">Остаток не завершенный</h5>
                     <div class="row align-items-center">
                       <div class="col-8">
                         <h4 class="fw-semibold mb-3">$36,358</h4>
@@ -366,115 +402,49 @@ echo "Connected successfully";
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">1417169</h6></td>
-                        <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-1">СВЕТИЛЬНИК УКАЗАТЕЛЯ "ВЫХОД"</h6>
-                            <span class="fw-normal">11734-18</span>                          
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">6</p>
-                        </td>
-                        <td class="border-bottom-0">
-                          <div class="d-flex align-items-center gap-2">
-                            <span class="badge bg-primary rounded-3 fw-semibold">ШТ</span>
-                          </div>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">81495,65</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">488973,9</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">3318</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">31.07.2023</h6>
-                        </td>
-                      </tr> 
-                      <tr>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">1171151</h6></td>
-                        <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-1">МАСЛО FAMILY SYNCON R&O 46</h6>
-                            <span class="fw-normal">449391-18</span>                          
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">48</p>
-                        </td>
-                        <td class="border-bottom-0">
-                          <div class="d-flex align-items-center gap-2">
-                            <span class="badge bg-secondary rounded-3 fw-semibold">ЛИТР</span>
-                          </div>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">13515,24</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">648731,52</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">3308</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">31.07.2023</h6>
-                        </td> 
-                      </tr>
+                     
+                      <!-- ######################################## -->
                       
-                      <tr>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">0514144</h6></td>
-                        <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-1">ПРОВОЛОКА СТАЛЬНАЯ СВАРОЧ ОМЕДНЕННАЯ</h6>
-                            <span class="fw-normal">435807-18</span>                          
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">97</p>
-                        </td>
-                        <td class="border-bottom-0">
-                          <div class="d-flex align-items-center gap-2">
-                            <span class="badge bg-danger rounded-3 fw-semibold">КГ</span>
-                          </div>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">17380</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">1685860</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">3308</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">31.07.2023</h6>
-                        </td>
-                      </tr>      
-                      <tr>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">4828135</h6></td>
-                        <td class="border-bottom-0">
-                            <h6 class="fw-semibold mb-1">КАБЕЛЬНЫЕ НАКОНЕЧНИКИ</h6>
-                            <span class="fw-normal">299716-18</span>                          
-                        </td>
-                        <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">1325</p>
-                        </td>
-                        <td class="border-bottom-0">
-                          <div class="d-flex align-items-center gap-2">
-                            <span class="badge bg-success rounded-3 fw-semibold">КОМП</span>
-                          </div>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">0,1</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">13,25 </h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">3318</h6>
-                        </td>
-                        <td class="border-bottom-0">
-                          <h6 class="fw-semibold mb-0 fs-4">31.07.2023</h6>
-                        </td>
-                      </tr>                       
+                     <?php 
+                     $sql = "SELECT * FROM main_table";
+                     if($result = $conn->query($sql)){
+    $rowsCount = $result->num_rows; // количество полученных строк
+
+    foreach($result as $row){
+        echo "<tr>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0\">". $row["nomer"] ."</h6></td>";
+        echo "<td class=\"border-bottom-0\" >";
+        echo "<h6 class=\"fw-semibold mb-1\"> ".$row["name"]."</h6>";
+        echo "<span class=\"fw-normal\">".$row["kod_material"]."</span>";                         
+        echo "</td>";
+        echo "<td class=\"border-bottom-0\"><p class=\"mb-0 fw-normal\">". $row["kolichestvo"]."</p></td>";
+        if($row["ed.izm"]=="ШТ"){
+          $mesuare_mark="bg-primary";
+        }
+        elseif($row["ed.izm"]=="ЛИТР"){
+          $mesuare_mark="bg-secondary";
+        }
+        elseif($row["ed.izm"]=="КГ"){
+          $mesuare_mark="bg-success";
+        }
+        else{
+          $mesuare_mark="bg-danger";
+        }
+        echo "<td class=\"border-bottom-0\"><div class=\"d-flex align-items-center gap-2\"><span class=\"badge ".$mesuare_mark." rounded-3 fw-semibold\">".$row["ed.izm"]."</span></div></td>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["cena"]."</h6></td>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["summa"]."</h6></td>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["sklad"]."</h6></td>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["data_prohoda"]."</h6></td>";
+        echo "</tr>";
+    } 
+    $result->free();
+} else{
+    echo "Ошибка: " . $conn->error;
+}?>
+<!-- ######################################## -->
+                      
+                      
+                                
                     </tbody>
                   </table>
                 </div>
@@ -713,5 +683,5 @@ echo "Connected successfully";
   <script src="src/assets/libs/simplebar/dist/simplebar.js"></script>
   <script src="src/assets/js/dashboard.js"></script>
 </body>
-
+<?php $conn->close();?>
 </html>
