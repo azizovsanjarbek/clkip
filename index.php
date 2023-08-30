@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Отчет об остатках склада</title>
+  <title> <?php echo "Отчет об остатках склада"?> </title>
   <link rel="shortcut icon" type="image/png" href="src/assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="src/assets/css/styles.min.css" />
 </head>
@@ -18,7 +18,7 @@
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-          <h3 class="text-nowrap logo-img">ЦЛ КИП</h3>
+          <h3 class="text-nowrap logo-img"><?php echo "ЦЛ КИП" ?></h3>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
           </div>
@@ -326,7 +326,7 @@
           <div class="col-lg-12 d-flex align-items-stretch">
             <div class="card w-100">
               <div class="card-body p-4">
-                <h5 class="card-title fw-semibold mb-4">Расход  на 12/12/2023</h5>
+                <h5 class="card-title fw-semibold mb-4">Расход  на <?php echo date("d/m/y")?></h5>
                 <div class="table-responsive">
                   <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">
@@ -476,7 +476,7 @@
           <div class="col-lg-12 d-flex align-items-stretch">
             <div class="card w-100">
               <div class="card-body p-4">
-                <h5 class="card-title fw-semibold mb-4">Приход  на 12/12/2023</h5>
+                <h5 class="card-title fw-semibold mb-4">Приход  на <?php echo date("d/m/y")?></h5>
                 <div class="table-responsive">
                   <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">
