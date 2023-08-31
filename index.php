@@ -406,7 +406,7 @@ if ($conn->connect_error) {
                       <!-- ######################################## -->
                       
                      <?php 
-                     $sql = "SELECT * FROM main_table";
+                     $sql = "SELECT * FROM main_table WHERE data_rashoda>='2023-08-24' ORDER BY data_rashoda DESC";
                      if($result = $conn->query($sql)){
     $rowsCount = $result->num_rows; // количество полученных строк
 
@@ -484,7 +484,7 @@ if ($conn->connect_error) {
                       <!-- ######################################## -->
                       
                      <?php 
-                     $prixodsql = "SELECT * FROM main_table";
+                     $prixodsql = "SELECT * FROM main_table  WHERE data_prohoda>='2023-08-24' ORDER BY data_prohoda DESC";
                      if($prixodresult = $conn->query($prixodsql)){
     $prixodrowsCount = $prixodresult->num_rows; // количество полученных строк
 
@@ -517,8 +517,7 @@ if ($conn->connect_error) {
     $prixodresult->free();
 } else{
     echo "Ошибка: " . $conn->error;
-}?>
-                     
+}?>                     
                     </tbody>
                   </table>
                 </div>

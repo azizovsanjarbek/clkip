@@ -19,7 +19,6 @@ function excel2mysql($worksheet, $connection, $table_name, $columns_name_line = 
     for ($column = 0; $column < $columns_count; $column++) {
       $columns_str .= ($columns_name_line == 0 ? "column" . $column : $worksheet->getCellByColumnAndRow($column, $columns_name_line)->getCalculatedValue()) . ",";
     }
-
     // Обрезаем строку, убирая запятую в конце
     $columns_str = substr($columns_str, 0, -1);
 
