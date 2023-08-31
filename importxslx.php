@@ -1,13 +1,11 @@
 <?
 // Подключаем библиотеку
 require_once "PHPExcel.php";
-require_once "pass.php";
 // Функция преобразования листа Excel в таблицу MySQL, с учетом объединенных строк и столбцов.
 // Значения берутся уже вычисленными. Параметры:
 //     $worksheet - лист Excel
 //     $connection - соединение с MySQL (mysqli)
 //     $table_name - имя таблицы MySQL
-$conn = new mysqli("localhost","root","",$database);
 //     $columns_name_line - строка с именами столбцов таблицы MySQL (0 - имена типа column + n)
 function excel2mysql($worksheet, $connection, $table_name, $columns_name_line = 0) {
   // Проверяем соединение с MySQL
