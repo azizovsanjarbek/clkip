@@ -301,7 +301,7 @@ if ($conn->connect_error) {
                 <!-- Yearly Breakup -->
                 <div class="card overflow-hidden">
                   <div class="card-body p-4">
-                    <h5 class="card-title mb-9 fw-semibold">Остаток не завершенный</h5>
+                    <h5 class="card-title mb-9 fw-semibold">Остаток в работе</h5>
                     <div class="row align-items-center">
                       <div class="col-8">
                         <h4 class="fw-semibold mb-3">$36,358</h4>
@@ -483,6 +483,43 @@ if ($conn->connect_error) {
                       </tr>
                     </thead>
                     <tbody>
+                      <!-- ######################################## -->
+                      
+                     <?php 
+                     $prixodsql = "SELECT * FROM main_table";
+                     if($prixodresult = $conn->query($prixodsql)){
+    $prixodrowsCount = $prixodresult->num_rows; // количество полученных строк
+
+    foreach($prixodresult as $prixodrow){
+        echo "<tr>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0\">". $prixodrow["nomer"] ."</h6></td>";
+        echo "<td class=\"border-bottom-0\" >";
+        echo "<h6 class=\"fw-semibold mb-1\"> ".$prixodrow["name"]."</h6>";
+        echo "<span class=\"fw-normal\">".$prixodrow["kod_material"]."</span>";                         
+        echo "</td>";
+        echo "<td class=\"border-bottom-0\"><p class=\"mb-0 fw-normal\">". $prixodrow["kolichestvo"]."</p></td>";
+        if($prixodrow["ed.izm"]=="ШТ"){
+          $mesuare_mark="bg-primary";
+        }
+        elseif($prixodrow["ed.izm"]=="ЛИТР"){
+          $mesuare_mark="bg-secondary";
+        }
+        elseif($prixodrow["ed.izm"]=="КГ"){
+          $mesuare_mark="bg-success";
+        }
+        else{
+          $mesuare_mark="bg-danger";
+        }
+        echo "<td class=\"border-bottom-0\"><div class=\"d-flex align-items-center gap-2\"><span class=\"badge ".$mesuare_mark." rounded-3 fw-semibold\">".$prixodrow["ed.izm"]."</span></div></td>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$prixodrow["cena"]."</h6></td>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$prixodrow["summa"]."</h6></td>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$prixodrow["sklad"]."</h6></td>";
+        echo "</tr>";
+    } 
+    $prixodresult->free();
+} else{
+    echo "Ошибка: " . $conn->error;
+}?>
                       <tr>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">1417169</h6></td>
                         <td class="border-bottom-0">
