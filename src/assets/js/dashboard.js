@@ -4,6 +4,7 @@ $(function () {
   // =====================================
   // Profit
   // =====================================
+
   var chart = {
     series: [
       { name: "Earnings this month:", data: [123, 390, 300, 350, 390, 180, 355, 390] },
@@ -57,7 +58,7 @@ $(function () {
 
     xaxis: {
       type: "category",
-      categories: ["16/08", "17/08", "18/08", "19/08", "20/08", "21/08", "22/08", "23/08"],
+      categories: ["15/08","16/08", "17/08", "18/08", "19/08", "20/08", "21/08", "22/08", "23/08"],
       labels: {
         style: { cssClass: "grey--text lighten-2--text fill-color" },
       },
@@ -103,7 +104,6 @@ $(function () {
 
   var chart = new ApexCharts(document.querySelector("#chart"), chart);
   chart.render();
-
 
   // =====================================
   // Breakup

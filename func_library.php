@@ -1,4 +1,5 @@
 <?
+// функция создания месяцев для 
 function month($number_of_month)
 {
     $arr = [
@@ -14,12 +15,10 @@ function month($number_of_month)
         'октябрь',
         'ноябрь',
         'декабрь'
-      ];
-      
+      ];    
       
       $month = $number_of_month-1;
       echo $arr[$month];
 };
-month(9);
-
 ?>
+

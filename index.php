@@ -149,7 +149,7 @@ if ($conn->connect_error) {
                             <i class="ti ti-arrow-up-left text-success"></i>
                           </span>
                           <p class="text-dark me-1 fs-3 mb-0">+9%</p>
-                          <p class="fs-3 mb-0">прошлый год</p>
+                          <p class="fs-3 mb-0">прошлый месяц</p>
                         </div>
                         <div class="d-flex align-items-center">
                           <div class="me-4">
@@ -181,7 +181,7 @@ if ($conn->connect_error) {
                 <!-- Yearly Breakup -->
                 <div class="card overflow-hidden">
                   <div class="card-body p-4">
-                    <h5 class="card-title mb-9 fw-semibold">Общий Расход</h5>
+                    <h5 class="card-title mb-9 fw-semibold">Общий расход</h5>
                     <div class="row align-items-center">
                       <div class="col-8">  
                       <?php 
@@ -209,7 +209,7 @@ if ($conn->connect_error) {
                             <i class="ti ti-arrow-up-left text-success"></i>
                           </span>
                           <p class="text-dark me-1 fs-3 mb-0">+9%</p>
-                          <p class="fs-3 mb-0">прошлый год</p>
+                          <p class="fs-3 mb-0">прошлый месяц</p>
                         </div>
                         <div class="d-flex align-items-center">
                           <div class="me-4">
@@ -262,14 +262,13 @@ if ($conn->connect_error) {
                         document.getElementById("minThree").innerHTML=resultThree
                         </script>
                         </h4>    
-                        <h4 class="fw-semibold mb-3" id="minTwo">
-                                  <div class="d-flex align-items-center mb-3">
+                        <div class="d-flex align-items-center mb-3">
                                     <span
                                       class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
                                       <i class="ti ti-arrow-up-left text-success"></i>
                                     </span>
                                     <p class="text-dark me-1 fs-3 mb-0">+9%</p>
-                                    <p class="fs-3 mb-0">прошлый год</p>
+                                    <p class="fs-3 mb-0">прошлый месяц</p>
                                   </div>
                                   <div class="d-flex align-items-center">
                                     <div class="me-4">
@@ -283,7 +282,7 @@ if ($conn->connect_error) {
                                   </div>
                                 </div>
                                 <div class="col-4">
-                                  <div class="d-flex justify-content-center">
+                                  <div class="d-flex justify-content-center">                                
                                     <div id="breakupThree"></div>
                                   </div>
                                 </div>
@@ -296,7 +295,7 @@ if ($conn->connect_error) {
           <!--  end coloum 3 -->
         </div>
         <div class="row">
-          <div class="col-lg-8 d-flex align-items-strech">
+          <div class="col-lg-12 d-flex align-items-strech">
             <div class="card w-100">
               <div class="card-body">
                 <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
@@ -306,9 +305,9 @@ if ($conn->connect_error) {
                   <div>
                     <select class="form-select">
                       <option value="1"><?php month(date('n'))?> 2023</option>
-                      <option value="2"><?php month(date('n')-1)?> </option>
-                      <option value="3"><?php month(date('n')-2)?> </option>
-                      <option value="4"><?php month(date('n')-3)?> </option>
+                      <option value="2"><?php month(date('n')-1)?> 2023 </option>
+                      <option value="3"><?php month(date('n')-2)?> 2023 </option>
+                      <option value="4"><?php month(date('n')-3)?> 2023 </option>
                     </select>
                   </div>
                 </div>
@@ -316,9 +315,9 @@ if ($conn->connect_error) {
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-12">
             <div class="row">
-              <div class="col-lg-12">
+              <div class="col-lg-4">
                 <!-- Yearly Breakup -->
                 <div class="card overflow-hidden">
                   <div class="card-body p-4">
@@ -332,16 +331,16 @@ if ($conn->connect_error) {
                             <i class="ti ti-arrow-up-left text-success"></i>
                           </span>
                           <p class="text-dark me-1 fs-3 mb-0">+9%</p>
-                          <p class="fs-3 mb-0">прошлый год</p>
+                          <p class="fs-3 mb-0">прошлый месяц</p>
                         </div>
                         <div class="d-flex align-items-center">
                           <div class="me-4">
                             <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                            <span class="fs-2">2023</span>
+                            <span class="fs-2"><? month(date("n")) ?></span>
                           </div>
                           <div>
                             <span class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
-                            <span class="fs-2">2023</span>
+                            <span class="fs-2"><? month(date("n")-1) ?></span>
                           </div>
                         </div>
                       </div>
@@ -354,7 +353,7 @@ if ($conn->connect_error) {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-12">
+              <div class="col-lg-4">
                 <!-- Monthly Earnings -->
                 <div class="card">
                   <div class="card-body">
