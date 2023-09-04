@@ -122,6 +122,7 @@ if ($conn->connect_error) {
                     <h5 class="card-title mb-9 fw-semibold">Общий остаток </h5>
                     <div class="row align-items-center">
                       <div class="col-8">
+
                       <?php 
                         $allsum= "SELECT summa FROM main_table";
                         $allsumresult = $conn->query($allsum);
@@ -135,7 +136,13 @@ if ($conn->connect_error) {
                           echo "0 results";
                         }
                         ?>
-                        <h4 class="fw-semibold mb-3"><?php echo $allsumvalue ?></h4>
+                        <h4 class="fw-semibold mb-3" id="min">
+                        <script>
+                        var num = <?php echo $allsumvalue ?>;
+                        var result = num.toLocaleString();
+                        document.getElementById("min").innerHTML=result 
+                        </script>
+                        </h4>
                         <div class="d-flex align-items-center mb-3">
                           <span
                             class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
@@ -174,7 +181,7 @@ if ($conn->connect_error) {
                 <!-- Yearly Breakup -->
                 <div class="card overflow-hidden">
                   <div class="card-body p-4">
-                    <h5 class="card-title mb-9 fw-semibold">Остаток на складе 3308</h5>
+                    <h5 class="card-title mb-9 fw-semibold">Общий Расход</h5>
                     <div class="row align-items-center">
                       <div class="col-8">  
                       <?php 
@@ -187,8 +194,15 @@ if ($conn->connect_error) {
                           $allsumvalue3308=$allsumvalue3308+$allsumrow3308["summa"];
                           }
                         } 
-                        ?>                     
-                        <h4 class="fw-semibold mb-3"><?php echo $allsumvalue3308 ?></h4>
+                        ?>    
+                        <h4 class="fw-semibold mb-3" id="minTwo">
+                        <script>
+                        var numTwo = <?php echo $allsumvalue3308 ?>;
+                        var resultTwo = numTwo.toLocaleString();
+                        document.getElementById("minTwo").innerHTML=resultTwo 
+                        </script>
+                        </h4>                 
+                        
                         <div class="d-flex align-items-center mb-3">
                           <span
                             class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
@@ -210,7 +224,7 @@ if ($conn->connect_error) {
                       </div>
                       <div class="col-4">
                         <div class="d-flex justify-content-center">
-                          <div id="breakup"></div>
+                          <div id="breakupTwo"></div>
                         </div>
                       </div>
                     </div>
@@ -227,7 +241,7 @@ if ($conn->connect_error) {
                           <!-- Yearly Breakup -->
                           <div class="card overflow-hidden">
                             <div class="card-body p-4">
-                              <h5 class="card-title mb-9 fw-semibold">Остаток на складе 3318</h5>
+                              <h5 class="card-title mb-9 fw-semibold">Общий приход</h5>
                               <div class="row align-items-center">
                                 <div class="col-8">
                                 <?php 
@@ -241,7 +255,14 @@ if ($conn->connect_error) {
                           }
                         } 
                         ?> 
-                                  <h4 class="fw-semibold mb-3"><?php echo $allsumvalue3318 ?></h4>
+                        <h4 class="fw-semibold mb-3" id="minThree">
+                        <script>
+                        var numThree = <?php echo $allsumvalue3318 ?>;
+                        var resultThree = numThree.toLocaleString();
+                        document.getElementById("minThree").innerHTML=resultThree
+                        </script>
+                        </h4>    
+                        <h4 class="fw-semibold mb-3" id="minTwo">
                                   <div class="d-flex align-items-center mb-3">
                                     <span
                                       class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
@@ -263,7 +284,7 @@ if ($conn->connect_error) {
                                 </div>
                                 <div class="col-4">
                                   <div class="d-flex justify-content-center">
-                                    <div id="breakup"></div>
+                                    <div id="breakupThree"></div>
                                   </div>
                                 </div>
                               </div>
@@ -326,7 +347,7 @@ if ($conn->connect_error) {
                       </div>
                       <div class="col-4">
                         <div class="d-flex justify-content-center">
-                          <div id="breakup"></div>
+                          <div id="breakupFour"></div>
                         </div>
                       </div>
                     </div>
@@ -360,6 +381,7 @@ if ($conn->connect_error) {
                       </div>
                     </div>
                   </div>
+                  <!-- Тут график из файл dashboard.js-->
                   <div id="earning"></div>
                 </div>
               </div>
@@ -399,6 +421,9 @@ if ($conn->connect_error) {
                         <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Дата прихода</h6>
                         </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Дата расхода</h6>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -406,7 +431,7 @@ if ($conn->connect_error) {
                       <!-- ######################################## -->
                       
                      <?php 
-                     $sql = "SELECT * FROM main_table WHERE data_rashoda>='2023-08-24' ORDER BY data_rashoda DESC";
+                     $sql = "SELECT * FROM main_table WHERE data_rashoda>='2023-08-24' ORDER BY data_rashoda ASC";
                      if($result = $conn->query($sql)){
     $rowsCount = $result->num_rows; // количество полученных строк
 
@@ -435,6 +460,7 @@ if ($conn->connect_error) {
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["summa"]."</h6></td>";
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["sklad"]."</h6></td>";
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["data_prohoda"]."</h6></td>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["data_rashoda"]."</h6></td>";
         echo "</tr>";
     } 
     $result->free();
@@ -478,13 +504,15 @@ if ($conn->connect_error) {
                         <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Склад</h6>
                         </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Дата прихода</h6>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <!-- ######################################## -->
-                      
+                      <!-- ######################################## -->                      
                      <?php 
-                     $prixodsql = "SELECT * FROM main_table  WHERE data_prohoda>='2023-08-24' ORDER BY data_prohoda DESC";
+                     $prixodsql = "SELECT * FROM main_table  WHERE data_prohoda>='2023-08-24' ORDER BY data_prohoda ASC";
                      if($prixodresult = $conn->query($prixodsql)){
     $prixodrowsCount = $prixodresult->num_rows; // количество полученных строк
 
@@ -512,6 +540,7 @@ if ($conn->connect_error) {
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$prixodrow["cena"]."</h6></td>";
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$prixodrow["summa"]."</h6></td>";
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$prixodrow["sklad"]."</h6></td>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$prixodrow["data_prohoda"]."</h6></td>";
         echo "</tr>";
     } 
     $prixodresult->free();
