@@ -282,7 +282,7 @@ if ($conn->connect_error) {
                                   </div>
                                 </div>
                                 <div class="col-4">
-                                  <div class="d-flex justify-content-center">                                
+                                  <div class="d-flex justify-content-center">                                    
                                     <div id="breakupThree"></div>
                                   </div>
                                 </div>
@@ -566,6 +566,7 @@ if ($conn->connect_error) {
   <script src="src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
   <script src="src/assets/libs/simplebar/dist/simplebar.js"></script>
   <script src="src/assets/js/dashboard.js"></script>
+  <script src="src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
 </body>
 <?php $conn->close();?>
 </html>

@@ -104,7 +104,6 @@ $(function () {
 
   var chart = new ApexCharts(document.querySelector("#chart"), chart);
   chart.render();
-
   // =====================================
   // Breakup
   // =====================================
