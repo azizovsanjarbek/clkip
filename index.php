@@ -8,9 +8,9 @@
   <link rel="shortcut icon" type="image/png" href="src/assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="src/assets/css/styles.min.css" />
 </head>
-
+<?php include_once 'func_library.php'; ?>
 <body>
-
+  
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
@@ -104,7 +104,7 @@
       <div class="container-fluid">
         <!--  Row 1 -->
         <?php 
-  include 'pass.php';
+  include_once 'pass.php';
   $conn = new mysqli("localhost","root","",$database);
   // Check connection
 if ($conn->connect_error) {
@@ -154,11 +154,11 @@ if ($conn->connect_error) {
                         <div class="d-flex align-items-center">
                           <div class="me-4">
                             <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                            <span class="fs-2">2023</span>
+                            <span class="fs-2">3308</span>
                           </div>
                           <div>
                             <span class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
-                            <span class="fs-2">2023</span>
+                            <span class="fs-2">3318</span>
                           </div>
                         </div>
                       </div>
@@ -214,11 +214,11 @@ if ($conn->connect_error) {
                         <div class="d-flex align-items-center">
                           <div class="me-4">
                             <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                            <span class="fs-2">2023</span>
+                            <span class="fs-2">3308</span>
                           </div>
                           <div>
                             <span class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
-                            <span class="fs-2">2023</span>
+                            <span class="fs-2">3318</span>
                           </div>
                         </div>
                       </div>
@@ -274,11 +274,11 @@ if ($conn->connect_error) {
                                   <div class="d-flex align-items-center">
                                     <div class="me-4">
                                       <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                                      <span class="fs-2">2023</span>
+                                      <span class="fs-2">3308</span>
                                     </div>
                                     <div>
                                       <span class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
-                                      <span class="fs-2">2023</span>
+                                      <span class="fs-2">3318</span>
                                     </div>
                                   </div>
                                 </div>
@@ -305,10 +305,10 @@ if ($conn->connect_error) {
                   </div>
                   <div>
                     <select class="form-select">
-                      <option value="1">Март 2023</option>
-                      <option value="2">Апрель 2023</option>
-                      <option value="3">Май 2023</option>
-                      <option value="4">Июнь 2023</option>
+                      <option value="1"><?php month(date('n'))?> 2023</option>
+                      <option value="2"><?php month(date('n')-1)?> </option>
+                      <option value="3"><?php month(date('n')-2)?> </option>
+                      <option value="4"><?php month(date('n')-3)?> </option>
                     </select>
                   </div>
                 </div>

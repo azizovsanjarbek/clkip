@@ -165,8 +165,8 @@ $(function () {
   // =====================================
   var breakupTwo = {
     color: "#adb5bd",
-    series: [20, 100, 25],
-    labels: ["2022", "2021", "2020"],
+    series: [20, 100],
+    labels: ["3318", "3308"],
     chart: {
       width: 180,
       type: "pie",
@@ -221,8 +221,8 @@ $(function () {
   // =====================================
   var breakupThree = {
     color: "#adb5bd",
-    series: [70, 40, 125],
-    labels: ["2022", "2021", "2020"],
+    series: [70, 40],
+    labels: ["2022", "2021"],
     chart: {
       width: 180,
       type: "pie",
@@ -275,8 +275,8 @@ $(function () {
   // =====================================
   var breakupFour = {
     color: "#adb5bd",
-    series: [70, 40, 125],
-    labels: ["2022", "2021", "2020"],
+    series: [70, 40],
+    labels: ["2022", "2021"],
     chart: {
       width: 180,
       type: "donut",
