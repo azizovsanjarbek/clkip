@@ -11,8 +11,8 @@ $txt = "$(function () {
 
   var chart = {
     series: [
-      { name: \"Earnings this month:\", data: [123, 390, 300, 350, 390, 180, 355, 390] },
-      { name: \"Expense this month:\", data: [200, 220, 325, 215, 250, 310, 280, 250] },
+      { name: \"Приход:\", data: [123, 390, 300, 350, 390, 180, 355, 390] },
+      { name: \"Расход:\", data: [200, 220, 325, 215, 250, 310, 280, 250] },
     ],
 
     chart: {
@@ -62,6 +62,7 @@ $txt = "$(function () {
 
     xaxis: {
       type: \"category\",
+      
       categories: [\"15/08\",\"16/08\", \"17/08\", \"18/08\", \"19/08\", \"20/08\", \"21/08\", \"22/08\", \"23/08\"],
       labels: {
         style: { cssClass: \"grey--text lighten-2--text fill-color\" },
@@ -333,103 +334,6 @@ $.getJSON(url1, function(response1) {
  
   var chart = new ApexCharts(document.querySelector(\"#breakupFour\"), breakupFour);
   chart.render();
-  /*#####################################################*/
-  /*#################~~line chart~~######################*/
-  /*#####################################################*/
-  var chartline = {
-    chart: {
-      height: 350,
-      type: \"line\",
-      stacked: false,
-      toolbar: { 
-        show: true,
-        offsetX: 0,
-        offsetY: 0,
-        tools: {
-          download: true,
-          selection: false,
-          zoom: false,
-          zoomin: false,
-          zoomout: false,
-          pan: false,
-          reset: false | '<img src=\"/static/icons/reset.png\" width=\"20\">',
-          customIcons: []
-        }
-      },
-      foreColor: \"#adb0bb\",
-      fontFamily: 'inherit',
-      sparkline: { enabled: false },
-    },
-    markers: { size: 0 },
-    dataLabels: {
-      enabled: false,
-    },
-    legend: {
-      show: false,
-    },
-    colors: [\"#5D87FF\", \"#49BEFF\"],
-    series: [
-      {
-        name: \"monthly\",
-        data: [14, 20, 25, 15, 25, 28, 38, 46]
-      },
-      {
-        name:\"monthly2\",
-        data: [13, 19, 24, 14, 24, 27, 37, 45]
-      }
-    ],
-    stroke: {
-      curve: \"smooth\",
-      width: 2,
-    },
-    plotOptions: {
-      bar: {
-        columnWidth: \"20%\"
-      }
-    },
-
-    xaxis: {
-      categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016]
-    },
-    grid: {
-      borderColor: \"rgba(0,0,0,0.1)\",
-      strokeDashArray: 3,
-      xaxis: {
-        lines: {
-          show: false,
-        },
-      },
-    },
-    tooltip: {
-      shared: false,
-      intersect: true,
-      x: {
-        show: false
-      }
-    },
-    tooltip: { theme: \"light\" },
-    legend: {
-      horizontalAlign: \"left\",
-      offsetX: 40
-    }
-    
-  };
-  var url = 'src/assets/js/db.json';
-
-$.getJSON(url, function(response) {
-  chart.updateSeries([{
-    
-        name: \"monthly\",
-        data: response.monthlyOutCome
-  }])
-});
-
-  var chart = new ApexCharts(document.querySelector(\"#chartline\"), chartline);
-  chart.render();
-
-  /*#####################################################*/
-  /*##############~~line chart end ~~####################*/
-  /*#####################################################*/
   // =====================================
   // Earning
   // =====================================

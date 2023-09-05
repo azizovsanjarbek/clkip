@@ -153,11 +153,11 @@ if ($conn->connect_error) {
                         </div>
                         <div class="d-flex align-items-center">
                           <div class="me-4">
-                            <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
+                            <span class="round-8 bg-success rounded-circle me-2 d-inline-block"></span>
                             <span class="fs-2">3308</span>
                           </div>
                           <div>
-                            <span class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
+                            <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
                             <span class="fs-2">3318</span>
                           </div>
                         </div>
@@ -213,11 +213,11 @@ if ($conn->connect_error) {
                         </div>
                         <div class="d-flex align-items-center">
                           <div class="me-4">
-                            <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
+                            <span class="round-8 bg-success rounded-circle me-2 d-inline-block"></span>
                             <span class="fs-2">3308</span>
                           </div>
                           <div>
-                            <span class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
+                            <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
                             <span class="fs-2">3318</span>
                           </div>
                         </div>
@@ -272,11 +272,11 @@ if ($conn->connect_error) {
                                   </div>
                                   <div class="d-flex align-items-center">
                                     <div class="me-4">
-                                      <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
+                                      <span class="round-8 bg-success rounded-circle me-2 d-inline-block"></span>
                                       <span class="fs-2">3308</span>
                                     </div>
                                     <div>
-                                      <span class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
+                                      <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
                                       <span class="fs-2">3318</span>
                                     </div>
                                   </div>
@@ -311,7 +311,7 @@ if ($conn->connect_error) {
                     </select>
                   </div>
                 </div>
-                <div id="chartline"></div>
+                <div id="chart"></div>
               </div>
             </div>
           </div>
@@ -339,7 +339,7 @@ if ($conn->connect_error) {
                             <span class="fs-2"><? month(date("n")) ?></span>
                           </div>
                           <div>
-                            <span class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
+                            <span class="round-8 bg-success rounded-circle me-2 d-inline-block"></span>
                             <span class="fs-2"><? month(date("n")-1) ?></span>
                           </div>
                         </div>
