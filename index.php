@@ -300,7 +300,7 @@ if ($conn->connect_error) {
               <div class="card-body">
                 <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                   <div class="mb-3 mb-sm-0">
-                    <h5 class="card-title fw-semibold">Ежедневный отчет прихода и расхода</h5>
+                    <h5 class="card-title fw-semibold">Ежедневный отчет о расходе в течение месяца</h5>
                   </div>
                   <div>
                     <select class="form-select">
@@ -311,7 +311,7 @@ if ($conn->connect_error) {
                     </select>
                   </div>
                 </div>
-                <div id="chart"></div>
+                <div id="chartline"></div>
               </div>
             </div>
           </div>
@@ -353,7 +353,7 @@ if ($conn->connect_error) {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-8">
                 <!-- Monthly Earnings -->
                 <div class="card">
                   <div class="card-body">
