@@ -72,7 +72,7 @@ $(function () {
       tickAmount: 4,
       labels: {
         style: {
-          cssClass: "grey--text lighten-2--text fill-color",
+          cssClass:"grey--text lighten-2--text fill-color",
         },
       },
     },
@@ -109,7 +109,7 @@ $(function () {
   // =====================================
   var breakup = {
     color: "#adb5bd",
-    series: [70, 100],
+    series: [200, 100],
     labels: ["3308", "3318"],
     chart: {
       width: 180,
@@ -319,7 +319,14 @@ $(function () {
       fillSeriesColor: false,
     },
   };
+  var url1 = 'src/assets/js/db.json';
 
+$.getJSON(url1, function(response1) {
+  chart.updateSeries([{
+    data: response1.TotalInCome
+  }])
+});
+ 
   var chart = new ApexCharts(document.querySelector("#breakupFour"), breakupFour);
   chart.render();
   /*#####################################################*/
@@ -363,7 +370,7 @@ $(function () {
         data: [14, 20, 25, 15, 25, 28, 38, 46]
       },
       {
-        name: "monthly2",
+        name:"monthly2",
         data: [13, 19, 24, 14, 24, 27, 37, 45]
       }
     ],
@@ -409,27 +416,9 @@ $.getJSON(url, function(response) {
   chart.updateSeries([{
     
         name: "monthly",
-        data: response
+        data: response.monthlyOutCome
   }])
 });
-
-/*
-$.getJSON(url, function(response) {
-chart.updateOptions({
-  series: [{
-    data: [{
-      x: "02-02-2002",
-      y: 44
-    }, {
-      x: "12-02-2002",
-      y: 51
-    }]
-  }],
-  xaxis: {
-    position: 'top'
-  }
-})
-});*/
 
   var chart = new ApexCharts(document.querySelector("#chartline"), chartline);
   chart.render();
@@ -455,7 +444,7 @@ chart.updateOptions({
     series: [
       {
         name: "Earnings",
-        color: "#49BEFF",
+        color:"#49BEFF",
         data: [25, 66, 20, 40, 12, 58, 20],
       },
     ],
