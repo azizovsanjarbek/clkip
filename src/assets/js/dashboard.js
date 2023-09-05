@@ -329,10 +329,32 @@ $(function () {
     chart: {
       height: 350,
       type: "line",
-      stacked: false
+      stacked: false,
+      toolbar: { 
+        show: true,
+        offsetX: 0,
+        offsetY: 0,
+        tools: {
+          download: true,
+          selection: false,
+          zoom: false,
+          zoomin: false,
+          zoomout: false,
+          pan: false,
+          reset: false | '<img src="/static/icons/reset.png" width="20">',
+          customIcons: []
+        }
+      },
+      foreColor: "#adb0bb",
+      fontFamily: 'inherit',
+      sparkline: { enabled: false },
     },
+    markers: { size: 0 },
     dataLabels: {
-      enabled: false
+      enabled: false,
+    },
+    legend: {
+      show: false,
     },
     colors: ["#5D87FF", "#49BEFF"],
     series: [
@@ -354,10 +376,19 @@ $(function () {
         columnWidth: "20%"
       }
     },
+
     xaxis: {
       categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016]
     },
-    
+    grid: {
+      borderColor: "rgba(0,0,0,0.1)",
+      strokeDashArray: 3,
+      xaxis: {
+        lines: {
+          show: false,
+        },
+      },
+    },
     tooltip: {
       shared: false,
       intersect: true,
@@ -376,6 +407,7 @@ $(function () {
 
 $.getJSON(url, function(response) {
   chart.updateSeries([{
+    
         name: "monthly",
         data: response
   }])
