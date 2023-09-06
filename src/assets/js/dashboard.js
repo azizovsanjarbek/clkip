@@ -58,6 +58,7 @@ $(function () {
 
     xaxis: {
       type: "category",
+      
       categories: ["15/08","16/08", "17/08", "18/08", "19/08", "20/08", "21/08", "22/08", "23/08"],
       labels: {
         style: { cssClass: "grey--text lighten-2--text fill-color" },

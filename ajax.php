@@ -1,4 +1,4 @@
-<?
+<?php
 $myfile = fopen("src/assets/js/dashboard.js", "w") or die("Не удается открыть файл!");
 
 
