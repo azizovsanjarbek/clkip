@@ -510,7 +510,7 @@ if ($conn->connect_error) {
                     <tbody>
                       <!-- ######################################## -->                      
                      <?php 
-                     $prixodsql = "SELECT * FROM main_table  WHERE data_prohoda>='2023-08-24' ORDER BY data_prohoda ASC";
+                     $prixodsql = "SELECT * FROM prihod  WHERE upload_date>='2023-08-24'";
                      if($prixodresult = $conn->query($prixodsql)){
     $prixodrowsCount = $prixodresult->num_rows; // количество полученных строк
 
@@ -522,23 +522,23 @@ if ($conn->connect_error) {
         echo "<span class=\"fw-normal\">".$prixodrow["kod_material"]."</span>";                         
         echo "</td>";
         echo "<td class=\"border-bottom-0\"><p class=\"mb-0 fw-normal\">". $prixodrow["kolichestvo"]."</p></td>";
-        if($prixodrow["ed.izm"]=="ШТ"){
+        if($prixodrow["ed_izm"]=="ШТ"){
           $mesuare_mark="bg-primary";
         }
-        elseif($prixodrow["ed.izm"]=="ЛИТР"){
+        elseif($prixodrow["ed_izm"]=="ЛИТР"){
           $mesuare_mark="bg-secondary";
         }
-        elseif($prixodrow["ed.izm"]=="КГ"){
+        elseif($prixodrow["ed_izm"]=="КГ"){
           $mesuare_mark="bg-success";
         }
         else{
           $mesuare_mark="bg-danger";
         }
-        echo "<td class=\"border-bottom-0\"><div class=\"d-flex align-items-center gap-2\"><span class=\"badge ".$mesuare_mark." rounded-3 fw-semibold\">".$prixodrow["ed.izm"]."</span></div></td>";
+        echo "<td class=\"border-bottom-0\"><div class=\"d-flex align-items-center gap-2\"><span class=\"badge ".$mesuare_mark." rounded-3 fw-semibold\">".$prixodrow["ed_izm"]."</span></div></td>";
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$prixodrow["cena"]."</h6></td>";
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$prixodrow["summa"]."</h6></td>";
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$prixodrow["sklad"]."</h6></td>";
-        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$prixodrow["data_prohoda"]."</h6></td>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$prixodrow["upload_date"]."</h6></td>";
         echo "</tr>";
     } 
     $prixodresult->free();
