@@ -430,10 +430,9 @@ if ($conn->connect_error) {
                       <!-- ######################################## -->
                       
                      <?php 
-                     $sql = "SELECT * FROM main_table WHERE data_rashoda>='2023-08-24' ORDER BY data_rashoda ASC";
+                     $sql = "SELECT * FROM rashod WHERE upload_date>='2023-08-24'";
                      if($result = $conn->query($sql)){
     $rowsCount = $result->num_rows; // количество полученных строк
-
     foreach($result as $row){
         echo "<tr>";
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0\">". $row["nomer"] ."</h6></td>";
@@ -442,24 +441,24 @@ if ($conn->connect_error) {
         echo "<span class=\"fw-normal\">".$row["kod_material"]."</span>";                         
         echo "</td>";
         echo "<td class=\"border-bottom-0\"><p class=\"mb-0 fw-normal\">". $row["kolichestvo"]."</p></td>";
-        if($row["ed.izm"]=="ШТ"){
+        if($row["ed_izm"]=="ШТ"){
           $mesuare_mark="bg-primary";
         }
-        elseif($row["ed.izm"]=="ЛИТР"){
+        elseif($row["ed_izm"]=="ЛИТР"){
           $mesuare_mark="bg-secondary";
         }
-        elseif($row["ed.izm"]=="КГ"){
+        elseif($row["ed_izm"]=="КГ"){
           $mesuare_mark="bg-success";
         }
         else{
           $mesuare_mark="bg-danger";
         }
-        echo "<td class=\"border-bottom-0\"><div class=\"d-flex align-items-center gap-2\"><span class=\"badge ".$mesuare_mark." rounded-3 fw-semibold\">".$row["ed.izm"]."</span></div></td>";
+        echo "<td class=\"border-bottom-0\"><div class=\"d-flex align-items-center gap-2\"><span class=\"badge ".$mesuare_mark." rounded-3 fw-semibold\">".$row["ed_izm"]."</span></div></td>";
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["cena"]."</h6></td>";
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["summa"]."</h6></td>";
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["sklad"]."</h6></td>";
-        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["data_prohoda"]."</h6></td>";
-        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["data_rashoda"]."</h6></td>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["data_prihoda"]."</h6></td>";
+        echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0 fs-4\">".$row["upload_date"]."</h6></td>";
         echo "</tr>";
     } 
     $result->free();
