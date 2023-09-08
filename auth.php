@@ -5,8 +5,7 @@ function authenticate($username, $password) {
   $link = mysqli_connect("localhost", "username", "password", "database");
   if (!$link) {
     die("Ошибка соединения: " . mysqli_error($link));
-  }
-  
+  }  
   // Получение данных из формы авторизации
   $username = mysqli_real_escape_string($link, $_POST['username']);
   $password = mysqli_real_escape_string($link, $_POST['password']);

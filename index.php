@@ -9,8 +9,7 @@
   <link rel="stylesheet" href="src/assets/css/styles.min.css" />
 </head>
 <?php include_once 'func_library.php'; ?>
-<body>
-  
+<body>  
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
@@ -106,7 +105,6 @@
         <?php 
   include_once 'pass.php';
   $conn = new mysqli("localhost","root","",$database);
-  // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }           
@@ -122,23 +120,9 @@ if ($conn->connect_error) {
                     <h5 class="card-title mb-9 fw-semibold">Общий остаток </h5>
                     <div class="row align-items-center">
                       <div class="col-8">
-
-                      <?php 
-                        $allsum= "SELECT summa FROM main_table";
-                        $allsumresult = $conn->query($allsum);
-                        $allsumvalue = 0;
-                        if ($allsumresult->num_rows > 0) {
-                          // output data of each row
-                          while($allsumrow = $allsumresult->fetch_assoc()) {
-                          $allsumvalue=$allsumvalue+$allsumrow["summa"];
-                          }
-                        } else {
-                          echo "0 results";
-                        }
-                        ?>
-                        <h4 class="fw-semibold mb-3" id="min">
+                       <h4 class="fw-semibold mb-3" id="min">
                         <script>
-                        var num = <?php echo $allsumvalue ?>;
+                        var num = <?php echo $all_sum_value_ostatok ?>;
                         var result = num.toLocaleString();
                         document.getElementById("min").innerHTML=result 
                         </script>
@@ -184,20 +168,9 @@ if ($conn->connect_error) {
                     <h5 class="card-title mb-9 fw-semibold">Общий расход</h5>
                     <div class="row align-items-center">
                       <div class="col-8">  
-                      <?php 
-                        $allsum3308= "SELECT summa FROM main_table WHERE sklad='3308'";
-                        $allsumresult3308 = $conn->query($allsum3308);
-                        $allsumvalue3308 = 0;
-                        if ($allsumresult3308->num_rows > 0) {
-                          // output data of each row
-                          while($allsumrow3308 = $allsumresult3308->fetch_assoc()) {
-                          $allsumvalue3308=$allsumvalue3308+$allsumrow3308["summa"];
-                          }
-                        } 
-                        ?>    
                         <h4 class="fw-semibold mb-3" id="minTwo">
                         <script>
-                        var numTwo = <?php echo $allsumvalue3308 ?>;
+                        var numTwo = <?php echo $all_sum_value_rashod; ?>;
                         var resultTwo = numTwo.toLocaleString();
                         document.getElementById("minTwo").innerHTML=resultTwo 
                         </script>
@@ -243,21 +216,10 @@ if ($conn->connect_error) {
                             <div class="card-body p-4">
                               <h5 class="card-title mb-9 fw-semibold">Общий приход</h5>
                               <div class="row align-items-center">
-                                <div class="col-8">
-                                <?php 
-                        $allsum3318= "SELECT summa FROM main_table WHERE sklad='3318'";
-                        $allsumresult3318 = $conn->query($allsum3318);
-                        $allsumvalue3318 = 0;
-                        if ($allsumresult3318->num_rows > 0) {
-                          // output data of each row
-                          while($allsumrow3318 = $allsumresult3318->fetch_assoc()) {
-                          $allsumvalue3318=$allsumvalue3318+$allsumrow3318["summa"];
-                          }
-                        } 
-                        ?> 
+                                <div class="col-8">                                
                         <h4 class="fw-semibold mb-3" id="minThree">
                         <script>
-                        var numThree = <?php echo $allsumvalue3318 ?>;
+                        var numThree = <?php echo $all_sum_value_prihod ?>;
                         var resultThree = numThree.toLocaleString();
                         document.getElementById("minThree").innerHTML=resultThree
                         </script>
@@ -381,7 +343,7 @@ if ($conn->connect_error) {
                     </div>
                   </div>
                   <!-- Тут график из файл dashboard.js-->
-                  <div id="earning"></div>
+                  <div id="chartline"></div>
                 </div>
               </div>
             </div>

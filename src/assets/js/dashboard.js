@@ -7,8 +7,8 @@ $(function () {
 
   var chart = {
     series: [
-      { name: "Приход:", data: [123, 390, 300, 350, 390, 180, 355, 390] },
-      { name: "Расход:", data: [200, 220, 325, 215, 250, 310, 280, 250] },
+      { name: "Приход:", data: [2000, 2000, 2000, 2000, 2000, 2000, 200, 2000] },
+      { name: "Расход:", data: [3000, 4000, 3000, 4000, 3000, 4000, 3000, 4000] },
     ],
 
     chart: {
@@ -23,8 +23,6 @@ $(function () {
 
 
     colors: ["#5D87FF", "#49BEFF"],
-
-
     plotOptions: {
       bar: {
         horizontal: false,
@@ -39,13 +37,9 @@ $(function () {
     dataLabels: {
       enabled: false,
     },
-
-
     legend: {
       show: false,
     },
-
-
     grid: {
       borderColor: "rgba(0,0,0,0.1)",
       strokeDashArray: 3,
@@ -69,7 +63,7 @@ $(function () {
     yaxis: {
       show: true,
       min: 0,
-      max: 400,
+      max: 5000,
       tickAmount: 4,
       labels: {
         style: {
@@ -110,7 +104,7 @@ $(function () {
   // =====================================
   var breakup = {
     color: "#adb5bd",
-    series: [200, 100],
+    series: [300, 100],
     labels: ["3308", "3318"],
     chart: {
       width: 180,
@@ -320,16 +314,73 @@ $(function () {
       fillSeriesColor: false,
     },
   };
-  var url1 = 'src/assets/js/db.json';
-
-$.getJSON(url1, function(response1) {
-  chart.updateSeries([{
-    data: response1.TotalInCome
-  }])
-});
  
   var chart = new ApexCharts(document.querySelector("#breakupFour"), breakupFour);
   chart.render();
+  /*#####################################################*/
+  /*#################~~line chart~~######################*/
+  /*#####################################################*/
+  var chartline = {
+    chart: {
+      height: 350,
+      type: "line",
+      stacked: false
+    },
+    dataLabels: {
+      enabled: false
+    },
+    colors: ["#5D87FF", "#49BEFF"],
+    series: [
+      {
+        name: "monthly",
+        data: [14, 20, 25, 15, 25, 28, 38, 46]
+      },
+      {
+        name: "monthly2",
+        data: [13, 19, 24, 14, 24, 27, 37, 45]
+      }
+    ],
+    stroke: {
+      curve: "smooth",
+      width: 2,
+    },
+    plotOptions: {
+      bar: {
+        columnWidth: "20%"
+      }
+    },
+    xaxis: {
+      categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016]
+    },
+    
+    tooltip: {
+      shared: false,
+      intersect: true,
+      x: {
+        show: false
+      }
+    },
+    tooltip: { theme: "light" },
+    legend: {
+      horizontalAlign: "left",
+      offsetX: 40
+    }
+    
+  };
+  var url = 'src/assets/js/db.json';
+
+$.getJSON(url, function(response) {
+  chart.updateSeries([{
+        name: "monthly",
+        data: response.monthly
+  }])
+});
+  var chart = new ApexCharts(document.querySelector("#chartline"), chartline);
+  chart.render();
+
+  /*#####################################################*/
+  /*##############~~line chart end ~~####################*/
+  /*#####################################################*/
   // =====================================
   // Earning
   // =====================================
@@ -376,5 +427,12 @@ $.getJSON(url1, function(response1) {
       },
     },
   };
+  var url = 'src/assets/js/db.json';
+
+  $.getJSON(url, function(response) {
+    earning.updateSeries([{
+      data: response.earning
+    }])
+  });
   new ApexCharts(document.querySelector("#earning"), earning).render();
 })
