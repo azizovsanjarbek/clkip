@@ -104,7 +104,7 @@ $(function () {
   // =====================================
   var breakup = {
     color: "#adb5bd",
-    series: [300, 100],
+    series: [200, 100],
     labels: ["3308", "3318"],
     chart: {
       width: 180,

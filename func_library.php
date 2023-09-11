@@ -73,7 +73,7 @@ $conn_ostatok = new mysqli("localhost","root","",$database);
 if ($conn_ostatok->connect_error) {
 die("Connection failed: " . $conn_ostatok->connect_error);
 }   
-  $all_sum_ostatok= "SELECT * FROM prihod";
+  $all_sum_ostatok= "SELECT * FROM main_table";
   $all_sum_result_ostatok = $conn_ostatok->query($all_sum_ostatok);
   $all_sum_value_ostatok = 0;
 //Вывод общего расхода за период
