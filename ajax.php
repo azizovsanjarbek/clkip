@@ -1,5 +1,6 @@
 <?php
 include_once 'func_library.php';
+$array = array(1000, 2000, 3000, 4000, 5000, 6000, 5000, 4000);
 $myfile = fopen("src/assets/js/dashboard.js", "w") or die("Не удается открыть файл!");
 
 
@@ -12,8 +13,7 @@ $txt = "$(function () {
 
   var chart = {
     series: [
-      { name: \"Приход:\", data: [2000, 2000, 2000, 2000, 2000, 2000, 200, 2000] },
-      { name: \"Расход:\", data: [3000, 4000, 3000, 4000, 3000, 4000, 3000, 4000] },
+      { name: \"Приход:\", data: [".$array[0].",".$array[1].",".$array[2].",".$array[3].",".$array[4].",".$array[5].",".$array[6].",".$array[7]."] }
     ],
 
     chart: {

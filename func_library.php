@@ -32,10 +32,9 @@ die("Connection failed: " . $conn_rashod->connect_error);
   $all_sum_rashod= "SELECT * FROM rashod";
   $all_sum_result_rashod = $conn_rashod->query($all_sum_rashod);
   $all_sum_value_rashod = 0;
-//Вывод общего расхода за период
-
+  //Вывод общего расхода за период
   if ($all_sum_result_rashod->num_rows > 0) {
-    // output data of each row
+    // output data of each row    
     while($all_sum_row_rashod = $all_sum_result_rashod->fetch_assoc()) {
     $all_sum_value_rashod=$all_sum_value_rashod+$all_sum_row_rashod["summa"];
     }

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
+  <title>Авторизация</title>
   <link rel="shortcut icon" type="image/png" href="src/assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="src/assets/css/styles.min.css" />
 </head>
@@ -24,16 +24,16 @@
                   <img src="src/assets/images/logos/dark-logo.svg" width="180" alt="">
                 </a>
                 <p class="text-center">ЦЛ КИП</p>
-                <form>
+                <form action="/login.php" method="post">
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Логин</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="text" class="form-control" id="exampleInputEmail1"  name="login">
                   </div>
                   <div class="mb-4">
                     <label for="exampleInputPassword1" class="form-label">Пароль</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" class="form-control" id="exampleInputPassword1"  name="pass">
                   </div>
-                  <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Войти</a>
+                  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Войти</button>
                 </form>
               </div>
             </div>
