@@ -1,5 +1,8 @@
 <?
 include_once 'pass.php';
+$day=date('d');
+$monthly=date('m');
+$year=date('Y');
 // функция создания месяцев для 
 function month($number_of_month)
 {
@@ -86,7 +89,38 @@ die("Connection failed: " . $conn_ostatok->connect_error);
     echo "Данные загружаются";
   }   
 $conn_ostatok->close();
+  ////////////////////////////////////////////////////////
+ //////////////Вывод ежедневных расходов/////////////////
+////////////////////////////////////////////////////////
+$conn_rashod_daily = new mysqli("localhost","root","",$database);
+//проверка соединения базон данных
+if ($conn_rashod_daily->connect_error) {
+die("Connection failed: " . $conn_rashod_daily->connect_error);
+}   
+for($i=1;$day>$i; $i++){
+  if($i<10){
+    $all_sum_rashod_daily= "SELECT * FROM rashod WHERE upload_date='$year-$monthly-0$i'";
+  }
+  else{
+    $all_sum_rashod_daily= "SELECT * FROM rashod WHERE upload_date='$year-$monthly-$i'";
+  } 
+  $all_sum_result_rashod_daily = $conn_rashod_daily->query($all_sum_rashod_daily);
+  $all_sum_value_rashod_daily = 0;
+  //Вывод общего расхода за период
+  if ($all_sum_result_rashod_daily->num_rows > 0) {
+    // output data of each row    
+    while($all_sum_row_rashod_daily = $all_sum_result_rashod_daily->fetch_assoc()) {
+    $all_sum_value_rashod_daily=$all_sum_value_rashod_daily+$all_sum_row_rashod_daily["summa"];
+    }
+  }; 
+  $array[] = $all_sum_value_rashod_daily;
+}   
+$conn_rashod_daily->close();
+$newdata = json_encode($array);
 
-
+for($j=1;$day>$j; $j++){
+  $date_array[]=$j."/".$monthly;
+}
+$new_date_array = json_encode($date_array);
 ?>
 

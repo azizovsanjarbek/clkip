@@ -1,11 +1,7 @@
 <?php
 include_once 'func_library.php';
-$array = array(1000, 2000, 3000, 4000, 5000, 6000, 5000, 4000);
 $myfile = fopen("src/assets/js/dashboard.js", "w") or die("Не удается открыть файл!");
-
-
 $txt = "$(function () {
-
 
   // =====================================
   // Profit
@@ -13,7 +9,7 @@ $txt = "$(function () {
 
   var chart = {
     series: [
-      { name: \"Приход:\", data: [".$array[0].",".$array[1].",".$array[2].",".$array[3].",".$array[4].",".$array[5].",".$array[6].",".$array[7]."] }
+      { name: \"Приход:\", data: ".$newdata." }
     ],
 
     chart: {
@@ -58,7 +54,7 @@ $txt = "$(function () {
     xaxis: {
       type: \"category\",
       
-      categories: [\"15/08\",\"16/08\", \"17/08\", \"18/08\", \"19/08\", \"20/08\", \"21/08\", \"22/08\", \"23/08\"],
+      categories: ".$new_date_array.",
       labels: {
         style: { cssClass: \"grey--text lighten-2--text fill-color\" },
       },
@@ -68,7 +64,7 @@ $txt = "$(function () {
     yaxis: {
       show: true,
       min: 0,
-      max: 5000,
+      max: 10000000,
       tickAmount: 4,
       labels: {
         style: {
