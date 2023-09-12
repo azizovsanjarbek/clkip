@@ -90,7 +90,7 @@ die("Connection failed: " . $conn_ostatok->connect_error);
   }   
 $conn_ostatok->close();
   ////////////////////////////////////////////////////////
- //////////////Вывод ежедневных расходов/////////////////
+ //////////////Вывод ежедневных расходов /////////////////
 ////////////////////////////////////////////////////////
 $conn_rashod_daily = new mysqli("localhost","root","",$database);
 //проверка соединения базон данных
@@ -122,5 +122,33 @@ for($j=1;$day>$j; $j++){
   $date_array[]=$j."/".$monthly;
 }
 $new_date_array = json_encode($date_array);
+  ////////////////////////////////////////////////////////
+ //////////////Вывод ежедневных приход //////////////////
+////////////////////////////////////////////////////////
+$conn_prihod_daily = new mysqli("localhost","root","",$database);
+//проверка соединения базон данных
+if ($conn_prihod_daily->connect_error) {
+die("Connection failed: " . $conn_prihod_daily->connect_error);
+}   
+for($m=1;$day>$m; $m++){
+  if($m<10){
+    $all_sum_prihod_daily= "SELECT * FROM prihod WHERE upload_date='$year-$monthly-0$m'";
+  }
+  else{
+    $all_sum_prihod_daily= "SELECT * FROM prihod WHERE upload_date='$year-$monthly-$m'";
+  } 
+  $all_sum_result_prihod_daily = $conn_prihod_daily->query($all_sum_prihod_daily);
+  $all_sum_value_prihod_daily = 0;
+  //Вывод общего расхода за период
+  if ($all_sum_result_prihod_daily->num_rows > 0) {
+    // output data of each row    
+    while($all_sum_row_prihod_daily = $all_sum_result_prihod_daily->fetch_assoc()) {
+    $all_sum_value_prihod_daily=$all_sum_value_prihod_daily+$all_sum_row_prihod_daily["summa"];
+    }
+  }; 
+  $prihod_array[] = $all_sum_value_prihod_daily;
+}   
+$prihod_date_array = json_encode($prihod_array);
+$conn_prihod_daily->close();
 ?>
 

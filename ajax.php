@@ -333,11 +333,11 @@ $txt = "$(function () {
     colors: [\"#5D87FF\", \"#49BEFF\"],
     series: [
       {
-        name: \"monthly\",
-        data: [14, 20, 25, 15, 25, 28, 38, 46]
+        name: \"склад 3308\",
+        data:".$prihod_date_array."
       },
       {
-        name: \"monthly2\",
+        name: \"склад 3318\",
         data: [13, 19, 24, 14, 24, 27, 37, 45]
       }
     ],
@@ -351,7 +351,7 @@ $txt = "$(function () {
       }
     },
     xaxis: {
-      categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016]
+      categories: $new_date_array
     },
     
     tooltip: {
@@ -368,14 +368,14 @@ $txt = "$(function () {
     }
     
   };
-  var url = 'src/assets/js/db.json';
+  /*  var url = 'src/assets/js/db.json';
 
 $.getJSON(url, function(response) {
   chart.updateSeries([{
         name: \"monthly\",
         data: response.monthly
   }])
-});
+});*/
   var chart = new ApexCharts(document.querySelector(\"#chartline\"), chartline);
   chart.render();
 
