@@ -71,26 +71,50 @@ $conn_prihod->close();
  //////////////общий остаток/////////////////////////////
 ////////////////////////////////////////////////////////
 $conn_ostatok = new mysqli("localhost","root","",$database);
-// Check connection
+// проверка соединений
 if ($conn_ostatok->connect_error) {
 die("Connection failed: " . $conn_ostatok->connect_error);
 }   
   $all_sum_ostatok= "SELECT * FROM main_table";
   $all_sum_result_ostatok = $conn_ostatok->query($all_sum_ostatok);
   $all_sum_value_ostatok = 0;
-//Вывод общего расхода за период
-
+//Вывод общего расхода и суммирования за период
   if ($all_sum_result_ostatok->num_rows > 0) {
     // output data of each row
     while($all_sum_row_ostatok = $all_sum_result_ostatok->fetch_assoc()) {
     $all_sum_value_ostatok=$all_sum_value_ostatok+$all_sum_row_ostatok["summa"];
     }
-  } else {
-    echo "Данные загружаются";
-  }   
+  };
+    //####################################/
+   //Начало сбора данных для склада 3308//
+  //####################################/
+  $all_sum_ostatok_3308= "SELECT * FROM main_table WHERE sklad='3308'";
+  $all_sum_result_ostatok_3308 = $conn_ostatok->query($all_sum_ostatok_3308);
+  $all_sum_value_ostatok_3308 = 0;
+  //Вывод общего расхода и суммирования за период для склада 3308
+  if ($all_sum_result_ostatok_3308->num_rows > 0) {
+    // output data of each row
+    while($all_sum_row_ostatok_3308 = $all_sum_result_ostatok_3308->fetch_assoc()) {
+    $all_sum_value_ostatok_3308=$all_sum_value_ostatok_3308+$all_sum_row_ostatok_3308["summa"];
+    }
+  }
+    //####################################//
+   //Начало сбора данных для склада 3308///
+  //####################################//
+  $all_sum_ostatok_3318= "SELECT * FROM main_table WHERE sklad='3318'";
+  $all_sum_result_ostatok_3318 = $conn_ostatok->query($all_sum_ostatok_3318);
+  $all_sum_value_ostatok_3318 = 0;
+  //Вывод общего расхода и суммирования за период для склада 3308
+  if ($all_sum_result_ostatok_3318->num_rows > 0) {
+    // output data of each row
+    while($all_sum_row_ostatok_3318 = $all_sum_result_ostatok_3318->fetch_assoc()) {
+    $all_sum_value_ostatok_3318=$all_sum_value_ostatok_3318+$all_sum_row_ostatok_3318["summa"];
+    }
+  }
+  
 $conn_ostatok->close();
   ////////////////////////////////////////////////////////
- //////////////Вывод ежедневных расходов /////////////////
+ //////////////Вывод ежедневных расходов ////////////////
 ////////////////////////////////////////////////////////
 $conn_rashod_daily = new mysqli("localhost","root","",$database);
 //проверка соединения базон данных

@@ -105,7 +105,7 @@ $txt = "$(function () {
   // =====================================
   var breakup = {
     color: \"#adb5bd\",
-    series: [200, 100],
+    series: [$all_sum_value_ostatok_3308, $all_sum_value_ostatok_3318],
     labels: [\"3308\", \"3318\"],
     chart: {
       width: 180,
@@ -335,10 +335,6 @@ $txt = "$(function () {
       {
         name: \"склад 3308\",
         data:".$prihod_date_array."
-      },
-      {
-        name: \"склад 3318\",
-        data: [13, 19, 24, 14, 24, 27, 37, 45]
       }
     ],
     stroke: {
@@ -368,14 +364,6 @@ $txt = "$(function () {
     }
     
   };
-  /*  var url = 'src/assets/js/db.json';
-
-$.getJSON(url, function(response) {
-  chart.updateSeries([{
-        name: \"monthly\",
-        data: response.monthly
-  }])
-});*/
   var chart = new ApexCharts(document.querySelector(\"#chartline\"), chartline);
   chart.render();
 

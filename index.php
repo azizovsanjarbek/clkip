@@ -37,9 +37,17 @@ if(empty($_COOKIE['login'])){
               <span class="hide-menu">Отчеты</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+              <a class="sidebar-link" href="/" aria-expanded="false">
                 <span>
-                  <i class="ti ti-layout-dashboard"></i>
+                <i class="ti ti-layout-dashboard"></i>            
+                </span>
+                <span class="hide-menu">Отчеты</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/stock.php" aria-expanded="false">
+                <span>
+                <i class="ti ti-file-description"></i>
                 </span>
                 <span class="hide-menu">Склады</span>
               </a>
@@ -321,13 +329,85 @@ if ($conn->connect_error) {
                   </div>
                 </div>
               </div>
-              <div class="col-lg-8">
+              <div class="col-lg-4">
+                <!-- Yearly Breakup -->
+                <div class="card overflow-hidden">
+                  <div class="card-body p-4">
+                    <h5 class="card-title mb-9 fw-semibold">Остаток пропавший</h5>
+                    <div class="row align-items-center">
+                      <div class="col-8">
+                        <h4 class="fw-semibold mb-3">$36,358</h4>
+                        <div class="d-flex align-items-center mb-3">
+                          <span
+                            class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
+                            <i class="ti ti-arrow-up-left text-success"></i>
+                          </span>
+                          <p class="text-dark me-1 fs-3 mb-0">+9%</p>
+                          <p class="fs-3 mb-0">прошлый месяц</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <div class="me-4">
+                            <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
+                            <span class="fs-2"><? month(date("n")) ?></span>
+                          </div>
+                          <div>
+                            <span class="round-8 bg-success rounded-circle me-2 d-inline-block"></span>
+                            <span class="fs-2"><? month(date("n")-1) ?></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="d-flex justify-content-center">
+                          <div id="breakupFour"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <!-- Yearly Breakup -->
+                <div class="card overflow-hidden">
+                  <div class="card-body p-4">
+                    <h5 class="card-title mb-9 fw-semibold">Остаток более года без движения</h5>
+                    <div class="row align-items-center">
+                      <div class="col-8">
+                        <h4 class="fw-semibold mb-3">$36,358</h4>
+                        <div class="d-flex align-items-center mb-3">
+                          <span
+                            class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
+                            <i class="ti ti-arrow-up-left text-success"></i>
+                          </span>
+                          <p class="text-dark me-1 fs-3 mb-0">+9%</p>
+                          <p class="fs-3 mb-0">прошлый месяц</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <div class="me-4">
+                            <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
+                            <span class="fs-2"><? month(date("n")) ?></span>
+                          </div>
+                          <div>
+                            <span class="round-8 bg-success rounded-circle me-2 d-inline-block"></span>
+                            <span class="fs-2"><? month(date("n")-1) ?></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="d-flex justify-content-center">
+                          <div id="breakupFour"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12">
                 <!-- Monthly Earnings -->
                 <div class="card">
                   <div class="card-body">
                     <div class="row alig n-items-start">
                       <div class="col-8">
-                        <h5 class="card-title mb-9 fw-semibold">Ежемесяцный приход</h5>
+                        <h5 class="card-title mb-9 fw-semibold">Ежедневный отчет о приходе в течение  месяца</h5>
                       </div>
                       <div class="col-4">
                         <div class="d-flex justify-content-end">
@@ -344,6 +424,7 @@ if ($conn->connect_error) {
                   <div id="chartline"></div>
                 </div>
               </div>
+              
             </div>
           </div>
         </div>
