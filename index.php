@@ -152,11 +152,11 @@ if ($conn->connect_error) {
                         <div class="d-flex align-items-center">
                           <div class="me-4">
                             <span class="round-8 bg-success rounded-circle me-2 d-inline-block"></span>
-                            <span class="fs-2">3308</span>
+                            <span class="fs-2">3318</span>
                           </div>
                           <div>
                             <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                            <span class="fs-2">3318</span>
+                            <span class="fs-2">3308</span>
                           </div>
                         </div>
                       </div>
@@ -249,11 +249,11 @@ if ($conn->connect_error) {
                                   <div class="d-flex align-items-center">
                                     <div class="me-4">
                                       <span class="round-8 bg-success rounded-circle me-2 d-inline-block"></span>
-                                      <span class="fs-2">3308</span>
+                                      <span class="fs-2">3318</span>
                                     </div>
                                     <div>
                                       <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                                      <span class="fs-2">3318</span>
+                                      <span class="fs-2">3308</span>
                                     </div>
                                   </div>
                                 </div>

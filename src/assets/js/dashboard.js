@@ -157,7 +157,7 @@ $(function () {
   // =====================================
   var breakupTwo = {
     color: "#adb5bd",
-    series: [20, 100],
+    series: [23908267, 13120710],
     labels: ["3318", "3308"],
     chart: {
       width: 180,
@@ -206,15 +206,13 @@ $(function () {
   var chart = new ApexCharts(document.querySelector("#breakupTwo"), breakupTwo);
   chart.render();
 
-
-
   // =====================================
   // Breakup 3
   // =====================================
   var breakupThree = {
     color: "#adb5bd",
-    series: [70, 40],
-    labels: ["2022", "2021"],
+    series: [72020857, 58026455],
+    labels: ["3308", "3318"],
     chart: {
       width: 180,
       type: "pie",

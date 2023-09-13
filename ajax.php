@@ -105,8 +105,8 @@ $txt = "$(function () {
   // =====================================
   var breakup = {
     color: \"#adb5bd\",
-    series: [$all_sum_value_ostatok_3308, $all_sum_value_ostatok_3318],
-    labels: [\"3308\", \"3318\"],
+    series: [$all_sum_value_ostatok_3318, $all_sum_value_ostatok_3308],
+    labels: [\"3318\", \"3308\"],
     chart: {
       width: 180,
       type: \"pie\",
@@ -160,7 +160,7 @@ $txt = "$(function () {
   // =====================================
   var breakupTwo = {
     color: \"#adb5bd\",
-    series: [20, 100],
+    series: [$all_sum_value_rashod_3318, $all_sum_value_rashod_3308],
     labels: [\"3318\", \"3308\"],
     chart: {
       width: 180,
@@ -209,15 +209,13 @@ $txt = "$(function () {
   var chart = new ApexCharts(document.querySelector(\"#breakupTwo\"), breakupTwo);
   chart.render();
 
-
-
   // =====================================
   // Breakup 3
   // =====================================
   var breakupThree = {
     color: \"#adb5bd\",
-    series: [70, 40],
-    labels: [\"2022\", \"2021\"],
+    series: [$all_sum_value_prihod_3318, $all_sum_value_prihod_3308],
+    labels: [\"3318\", \"3308\"],
     chart: {
       width: 180,
       type: \"pie\",

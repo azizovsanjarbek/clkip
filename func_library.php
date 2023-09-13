@@ -41,9 +41,35 @@ die("Connection failed: " . $conn_rashod->connect_error);
     while($all_sum_row_rashod = $all_sum_result_rashod->fetch_assoc()) {
     $all_sum_value_rashod=$all_sum_value_rashod+$all_sum_row_rashod["summa"];
     }
-  } else {
-    echo "Данные загружаются";
-  }   
+  }
+    //#####################################/
+   //Расчет общего расхода для склада 3308/
+  //#####################################/  
+  $all_sum_rashod_3308= "SELECT * FROM rashod WHERE sklad='3308'";
+  $all_sum_result_rashod_3308 = $conn_rashod->query($all_sum_rashod_3308);
+  $all_sum_value_rashod_3308 = 0;
+  //Вывод общего расхода за период
+  if ($all_sum_result_rashod_3308->num_rows > 0) {
+    // output data of each row    
+    while($all_sum_row_rashod_3308 = $all_sum_result_rashod_3308->fetch_assoc()) {
+    $all_sum_value_rashod_3308=$all_sum_value_rashod_3308+$all_sum_row_rashod_3308["summa"];
+    }
+  }
+    //#####################################/
+   //Расчет общего расхода для склада 3318/
+  //#####################################/  
+  $all_sum_rashod_3318= "SELECT * FROM rashod WHERE sklad='3318'";
+  $all_sum_result_rashod_3318 = $conn_rashod->query($all_sum_rashod_3318);
+  $all_sum_value_rashod_3318 = 0;
+  //Вывод общего расхода за период
+  if ($all_sum_result_rashod_3318->num_rows > 0) {
+    // output data of each row    
+    while($all_sum_row_rashod_3318 = $all_sum_result_rashod_3318->fetch_assoc()) {
+    $all_sum_value_rashod_3318=$all_sum_value_rashod_3318+$all_sum_row_rashod_3318["summa"];
+    }
+  }
+
+
 $conn_rashod->close();
   ////////////////////////////////////////////////////////
  //////////////общий приход//////////////////////////////
@@ -56,16 +82,44 @@ die("Connection failed: " . $conn_prihod->connect_error);
   $all_sum_prihod= "SELECT * FROM prihod";
   $all_sum_result_prihod = $conn_prihod->query($all_sum_prihod);
   $all_sum_value_prihod = 0;
-//Вывод общего расхода за период
-
+  //Вывод общего расхода за период
   if ($all_sum_result_prihod->num_rows > 0) {
     // output data of each row
     while($all_sum_row_prihod = $all_sum_result_prihod->fetch_assoc()) {
     $all_sum_value_prihod=$all_sum_value_prihod+$all_sum_row_prihod["summa"];
     }
-  } else {
-    echo "Данные загружаются";
-  }   
+  }
+    //#####################################/
+   //Расчет общего приход для склада 3308//
+  //#####################################/ 
+  
+  $all_sum_prihod_3308= "SELECT * FROM prihod WHERE sklad='3308'";
+  $all_sum_result_prihod_3308 = $conn_prihod->query($all_sum_prihod_3308);
+  $all_sum_value_prihod_3308 = 0;
+  //Вывод общего приход за период
+  if ($all_sum_result_prihod_3308->num_rows > 0) {
+    // output data of each row
+    while($all_sum_row_prihod_3308 = $all_sum_result_prihod_3308->fetch_assoc()) {
+    $all_sum_value_prihod_3308=$all_sum_value_prihod_3308+$all_sum_row_prihod_3308["summa"];
+    }
+  }
+    //#####################################/
+   //Расчет общего приход для склада 3308//
+  //#####################################/ 
+  
+  $all_sum_prihod_3318= "SELECT * FROM prihod WHERE sklad='3318'";
+  $all_sum_result_prihod_3318 = $conn_prihod->query($all_sum_prihod_3318);
+  $all_sum_value_prihod_3318 = 0;
+  //Вывод общего приход за период
+  if ($all_sum_result_prihod_3318->num_rows > 0) {
+    // output data of each row
+    while($all_sum_row_prihod_3318 = $all_sum_result_prihod_3318->fetch_assoc()) {
+    $all_sum_value_prihod_3318=$all_sum_value_prihod_3318+$all_sum_row_prihod_3318["summa"];
+    }
+  }
+
+
+
 $conn_prihod->close();
   ////////////////////////////////////////////////////////
  //////////////общий остаток/////////////////////////////
