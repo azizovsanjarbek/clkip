@@ -1,13 +1,13 @@
 <?php
-
- require_once('vendor/autoload.php');
-// Load an .xlsx file
-$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load('/sklad.xlsx');
+require_once('vendor/autoload.php');
+$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load('sklad.xlsx');
 
 $data = array(1,$spreadsheet->getActiveSheet()
 			->toArray(null,true,true,true));
 
-// Display the sheet content
-var_dump($data);
+			//var_export($data);
+
+echo count($data[1])."<br/>";
+echo count($data[1][1]);
 ?>
 
