@@ -6,11 +6,10 @@ if(empty($_COOKIE['login'])){
 ?>
 <!doctype html>
 <html lang="ru">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> <?php echo "Отчет об остатках склада"?> </title>
+  <title> <?php echo "Отчеты"?> </title>
   <link rel="shortcut icon" type="image/png" href="src/assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="src/assets/css/styles.min.css" />
 </head>
@@ -53,7 +52,7 @@ if(empty($_COOKIE['login'])){
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="#" aria-expanded="false">
+              <a class="sidebar-link" href="/projects.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
@@ -61,7 +60,7 @@ if(empty($_COOKIE['login'])){
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="#" aria-expanded="false">
+              <a class="sidebar-link" href="/cards.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-cards"></i>
                 </span>
@@ -69,7 +68,7 @@ if(empty($_COOKIE['login'])){
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="#" aria-expanded="false">
+              <a class="sidebar-link" href="/attention.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
