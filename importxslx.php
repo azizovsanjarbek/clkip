@@ -2,7 +2,7 @@
 include_once 'pass.php';
 require_once('vendor/autoload.php');
 $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load('sklad.xlsx');
-
+$today_import=date("Y-m-d");
 $data = array(1,$spreadsheet->getActiveSheet()
 			->toArray(null,true,true,true));
 
@@ -10,6 +10,11 @@ $data = array(1,$spreadsheet->getActiveSheet()
 
 $import_db = mysqli_connect($localhost, $username, $password, $database);
 $col_data = count($data[1]);
+$truncate_table_query = "TRUNCATE TABLE importxslx"; 
+mysqli_query($import_db, $truncate_table_query); 
+
+if($today_import==date("Y-m-d",filectime('sklads.xlsx'))){
+
 for($i=3; $col_data>$i; $i++){
 
 	$import_sql = "INSERT INTO importxslx (kod_material, name, nomer, kolichestvo, ed_izm, cena, summa, bez_dvij, data_pri, data_ras, kod_bso, kod_oau1, kod_oau2, bso, kod_sklada, sklad, balance, sklad2, ploshadka, data_izm_zap, pol_izm_zap, data_create_zap, pol_create_zap,TMS_SPECIALITY) VALUES ('".
@@ -20,7 +25,11 @@ for($i=3; $col_data>$i; $i++){
     } else {
 			 echo "Error: " . $import_sql . "<br>" . $import_db->error."</br></br>";
 		  }
-	}
-	
-	$import_db->close();
+	}	
+}
+else{
+	echo "данные таблицы устарели";
+}
+
+$import_db->close();
 ?>
