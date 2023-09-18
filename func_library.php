@@ -223,7 +223,7 @@ for($m=1;$day>$m; $m++){
     while($all_sum_row_prihod_daily = $all_sum_result_prihod_daily->fetch_assoc()) {
     $all_sum_value_prihod_daily=$all_sum_value_prihod_daily+$all_sum_row_prihod_daily["summa"];
     }
-  }; 
+  };  
   $prihod_array[] = $all_sum_value_prihod_daily;
 }   
 $prihod_date_array = json_encode($prihod_array);
