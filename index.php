@@ -23,7 +23,7 @@ if(empty($_COOKIE['login'])){
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-          <h3 class="text-nowrap logo-img"><?php echo "ЦЛ КИП" ?></h3>
+          <h3 class="text-nowrap logo-img justify-content-center"><a href="/"><?php echo "ЦЛ КИП" ?></a></h3>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
           </div>
