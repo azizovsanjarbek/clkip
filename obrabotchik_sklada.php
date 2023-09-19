@@ -11,7 +11,6 @@ $db = mysqli_connect($localhost, $username, $password, $database);
 
 $prihod_sql = "SELECT * FROM importxslx";
 $prihod_result= $db->query($prihod_sql);
-
 if($prihod_result->num_rows > 0) {
 
 while($row = $prihod_result->fetch_assoc()) {
@@ -24,10 +23,6 @@ while($row = $prihod_result->fetch_assoc()) {
   echo "Error: " . $add_sql . "<br>" . $db->error;
     }
 
-
 }
-   
 }
-
-
 $db->close();
