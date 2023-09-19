@@ -22,7 +22,7 @@ while($row = $prihod_result->fetch_assoc()) {
  else {
   echo "Error: " . $add_sql . "<br>" . $db->error;
     }
-
+// git
 }
 }
 $db->close();
