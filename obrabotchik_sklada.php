@@ -1,13 +1,15 @@
 <?php
 include_once 'pass.php'; 
 mb_internal_encoding("UTF-8");
+
 $today=date("Y-m-d");
 
 $db = mysqli_connect($localhost, $username, $password, $database);
 
   //////////////////////////////////////////////////////////
- //// начало работы функции обновления прихода склада//////
+ //// добавление новых данных в главную таблицу////////////
 //////////////////////////////////////////////////////////
+
 $data_upload = "SELECT * FROM date_of_upload WHERE upload_date='$today'";
 $data_upload_result = $db->query($data_upload );
 if($data_upload_result->num_rows > 0){
@@ -38,6 +40,28 @@ else{
      }
   }  
 }
+  ////////////////////////////////////////////////////////////
+ /////////проверка на изменние данных вчера и сегодня////////
+////////////////////////////////////////////////////////////
+$prihod_contol = "SELECT * FROM importxslx";
+$prihod_contol_result= $db->query($prihod_contol);
+if($prihod_contol_result->num_rows > 0) {
+while($prihod_contol_row = $prihod_contol_result->fetch_assoc()) {
+
+$prihod_update = "SELECT * FROM main_table WHERE nomer = '$prihod_contol_row[nomer]' and cena LIKE '$prihod_contol_row[cena]' and data_pri LIKE '$prihod_contol_row[data_pri]' and sklad LIKE '$prihod_contol_row[sklad]' and data_create_zap LIKE '$prihod_contol_row[data_create_zap]' and pol_create_zap LIKE '$prihod_contol_row[pol_create_zap]' and UPLOAD_DATE >= '2023-09-19'";
+$prihod_update_result = $db->query($prihod_update);
+if($prihod_update_result->num_rows == 3){
+  echo "все хорошо <br/>";
+}
+else{
+  echo "что то пошло не так <br/>";
+}
+}
+}
+else{
+  echo "Данные для прихода не удалось получить";
+}
+//echo "id: " . $prihod_contol_row["nomer"]. " - Name: " . $prihod_contol_row["name"]. " --- " . $prihod_contol_row["data_pri"].  " --- " . $prihod_contol_row["sklad"]. " --- " . $prihod_contol_row["cena"]."<br>";
 
 $db->close();
 
