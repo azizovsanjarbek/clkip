@@ -26,3 +26,47 @@ while($row = $prihod_result->fetch_assoc()) {
 }
 }
 $db->close();
+
+$new = "DELET e1 FROM employees AS e1 INNER JOIN employees as e2 WHERE e1.id<e2.id  AND e1.email = e2.email";
+
+/* Попытка подключения к серверу MySQL. Предполагая, что вы используете MySQL
+ сервер с настройкой по умолчанию (пользователь root без пароля)  */
+$link = mysqli_connect("localhost", "root", "", "demo");
+
+// Проверка подключения
+if ($link === false) {
+    die("Ошибка подключения. " . mysqli_connect_error());
+}
+
+// Попытка выполнения запроса select
+$sql = "SELECT * FROM persons WHERE first_name='john'";
+if ($result = mysqli_query($link, $sql)) {
+    if (mysqli_num_rows($result) > 0) {
+        echo "<table>";
+        echo "<tr>";
+        echo "<th>id</th>";
+        echo "<th>first_name</th>";
+        echo "<th>last_name</th>";
+        echo "<th>email</th>";
+        echo "</tr>";
+        while ($row = mysqli_fetch_array($result)) {
+            echo "<tr>";
+            echo "<td>" . $row['id'] . "</td>";
+            echo "<td>" . $row['first_name'] . "</td>";
+            echo "<td>" . $row['last_name'] . "</td>";
+            echo "<td>" . $row['email'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        // Закрыть набор результатов
+        mysqli_free_result($result);
+    } else {
+        echo "Записей, соответствующих вашему запросу, не найдено.";
+    }
+} else {
+    echo "ОШИБКА: не удалось выполнить $sql. " . mysqli_error($link);
+}
+
+// Закрыть соединение
+mysqli_close($link);
+?>
