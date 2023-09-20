@@ -26,3 +26,5 @@ while($row = $prihod_result->fetch_assoc()) {
 }
 }
 $db->close();
+
+$new = "DELET e1 FROM employees AS e1 INNER JOIN employees as e2 WHERE e1.id<e2.id  AND e1.email = e2.email";
