@@ -13,7 +13,7 @@ $db = mysqli_connect($localhost, $username, $password, $database);
 $data_upload = "SELECT * FROM date_of_upload WHERE upload_date='$today' and name_table LIKE 'main_table'";
 $data_upload_result = $db->query($data_upload );
 if($data_upload_result->num_rows > 0){
-  echo "файл уже импортирован";
+  echo "файл уже импортирован <br>";
 }
 else{
   $prihod_sql = "SELECT * FROM importxslx";
@@ -41,13 +41,14 @@ else{
   }  
 }
   ////////////////////////////////////////////////////////////
- /////////проверка на изменние данных вчера и сегодня////////
+ /////////проверка приход на изменние данных вчера и сегодня////////
 ////////////////////////////////////////////////////////////
 $prihod_data_upload = "SELECT * FROM date_of_upload WHERE upload_date='$today' and name_table LIKE 'prihod' ";
 $prihod_data_upload_result = $db->query($prihod_data_upload );
 if($prihod_data_upload_result->num_rows > 0){
 
-  echo "Данные для прихода уже обновлены";
+  echo "Данные для прихода уже обновлены <br/>";
+
 }
 else{
 $prihod_contol = "SELECT * FROM importxslx";
@@ -55,7 +56,7 @@ $prihod_contol_result= $db->query($prihod_contol);
 if($prihod_contol_result->num_rows > 0) {
 while($prihod_contol_row = $prihod_contol_result->fetch_assoc()) {
 
-$prihod_update = "SELECT * FROM main_table WHERE nomer = '$prihod_contol_row[nomer]' and cena LIKE '$prihod_contol_row[cena]' and data_pri LIKE '$prihod_contol_row[data_pri]' and sklad LIKE '$prihod_contol_row[sklad]' and data_create_zap LIKE '$prihod_contol_row[data_create_zap]' and pol_create_zap LIKE '$prihod_contol_row[pol_create_zap]' and data_izm_zap LIKE '$prihod_contol_row[data_izm_zap]' and UPLOAD_DATE >= '2023-09-19'";
+$prihod_update = "SELECT * FROM main_table WHERE nomer = '$prihod_contol_row[nomer]' and cena LIKE '$prihod_contol_row[cena]' and data_pri LIKE '$prihod_contol_row[data_pri]' and sklad LIKE '$prihod_contol_row[sklad]' and data_create_zap LIKE '$prihod_contol_row[data_create_zap]' and pol_create_zap LIKE '$prihod_contol_row[pol_create_zap]' and data_izm_zap LIKE '$prihod_contol_row[data_izm_zap]' and UPLOAD_DATE >= '2023-09-20'";
 $prihod_update_result = $db->query($prihod_update);
 if($prihod_update_result->num_rows == 2){
   echo "все хорошо <br/>";
@@ -70,8 +71,6 @@ else{
   echo "Ошибка ";// необходимо создать таблицу для ошибок
 }
 }
-
-
 $add_prihod_upload_date="INSERT date_of_upload VALUES (NULL,'$today','11','prihod')";
 if ($db->query($add_prihod_upload_date) === TRUE) {
   echo "New record created successfully <br><br>";
@@ -79,13 +78,35 @@ if ($db->query($add_prihod_upload_date) === TRUE) {
   else {
     echo "Error: " . $add_prihod_upload_date . "<br>" . $db->error;
   }
-
 }
 else{
-  echo "Данные для прихода не удалось получить";
+  echo "Данные для прихода не удалось получить <br/>";
+}  
 }
-  
+  ////////////////////////////////////////////////////////////
+ //проверка расхода на изменение данных вчера и сегодня//////
+////////////////////////////////////////////////////////////
+$rashod_data_upload = "SELECT * FROM date_of_upload WHERE upload_date='$today' and name_table LIKE 'rashod' ";
+$prihod_data_upload_result = $db->query($rashod_data_upload );
+if($prihod_data_upload_result->num_rows > 0){
+ echo "нет данных";
 }
+else{
+echo "есть данные";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //echo "id: " . $prihod_contol_row["nomer"]. " - Name: " . $prihod_contol_row["name"]. " --- " . $prihod_contol_row["data_pri"].  " --- " . $prihod_contol_row["sklad"]. " --- " . $prihod_contol_row["cena"]."<br>";
