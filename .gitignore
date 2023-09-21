@@ -11,3 +11,4 @@ package.json
 package-lock.json
 README.md 
 .htaccess
+.idea/*
