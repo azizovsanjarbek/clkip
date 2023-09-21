@@ -1,5 +1,6 @@
 <?
 include_once 'pass.php';
+$today=date('Y-m-d');
 $day=date('d');
 $monthly=date('m');
 $year=date('Y');
@@ -129,7 +130,7 @@ $conn_ostatok = new mysqli("localhost","root","",$database);
 if ($conn_ostatok->connect_error) {
 die("Connection failed: " . $conn_ostatok->connect_error);
 }   
-  $all_sum_ostatok= "SELECT * FROM main_table";
+  $all_sum_ostatok= "SELECT * FROM main_table WHERE UPLOAD_DATE='$today'";
   $all_sum_result_ostatok = $conn_ostatok->query($all_sum_ostatok);
   $all_sum_value_ostatok = 0;
 //Вывод общего расхода и суммирования за период
@@ -142,7 +143,7 @@ die("Connection failed: " . $conn_ostatok->connect_error);
     //####################################/
    //Начало сбора данных для склада 3308//
   //####################################/
-  $all_sum_ostatok_3308= "SELECT * FROM main_table WHERE sklad='3308'";
+  $all_sum_ostatok_3308= "SELECT * FROM main_table WHERE sklad='3308' and UPLOAD_DATE='$today'";
   $all_sum_result_ostatok_3308 = $conn_ostatok->query($all_sum_ostatok_3308);
   $all_sum_value_ostatok_3308 = 0;
   //Вывод общего расхода и суммирования за период для склада 3308
@@ -153,9 +154,9 @@ die("Connection failed: " . $conn_ostatok->connect_error);
     }
   }
     //####################################//
-   //Начало сбора данных для склада 3308///
+   //Начало сбора данных для склада 3318///
   //####################################//
-  $all_sum_ostatok_3318= "SELECT * FROM main_table WHERE sklad='3318'";
+  $all_sum_ostatok_3318= "SELECT * FROM main_table WHERE sklad='3318' and UPLOAD_DATE='$today'";
   $all_sum_result_ostatok_3318 = $conn_ostatok->query($all_sum_ostatok_3318);
   $all_sum_value_ostatok_3318 = 0;
   //Вывод общего расхода и суммирования за период для склада 3308
