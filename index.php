@@ -559,7 +559,7 @@ if ($conn->connect_error) {
         echo "<td class=\"border-bottom-0\"><h6 class=\"fw-semibold mb-0\">". $prixodrow["nomer"] ."</h6></td>";
         echo "<td class=\"border-bottom-0\" >";
         echo "<h6 class=\"fw-semibold mb-1\" style=\"white-space:normal !important\"> ".$prixodrow["name"]."</h6>";
-        echo "<span class=\"fw-normal\">".$prixodrow["kod_materiala"]."</span>";                         
+        echo "<span class=\"fw-normal\">".$prixodrow["kod_material"]."</span>";                         
         echo "</td>";
         echo "<td class=\"border-bottom-0\"><p class=\"mb-0 fw-normal\">". $prixodrow["kolichestvo"]."</p></td>";
         if($prixodrow["ed_izm"]=="ШТ"){
