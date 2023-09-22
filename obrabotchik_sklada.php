@@ -87,12 +87,32 @@ else{
  //проверка расхода на изменение данных вчера и сегодня//////
 ////////////////////////////////////////////////////////////
 $rashod_data_upload = "SELECT * FROM date_of_upload WHERE upload_date='$today' and name_table LIKE 'rashod' ";
-$prihod_data_upload_result = $db->query($rashod_data_upload );
-if($prihod_data_upload_result->num_rows > 0){
+$rashod_data_upload_result = $db->query($rashod_data_upload );
+if($rashod_data_upload_result->num_rows > 0){
  echo "нет данных";
 }
 else{
-echo "есть данные";
+
+$rashod_sql = "SELECT * FROM main_table WHERE UPLOAD_DATE='2023-09-21'";
+$rashod_result= $db->query($rashod_sql);
+if($rashod_result->num_rows > 0) {
+  while($rashod_result_row = $rashod_result->fetch_assoc()) {
+    //echo $rashod_result_row["name"]."<br/>";
+    $rashod_update ="SELECT * FROM importxslx WHERE nomer='$rashod_result_row[nomer]' and cena LIKE '$rashod_result_row[cena]' and data_pri LIKE '$rashod_result_row[data_pri]' and sklad LIKE '$rashod_result_row[sklad]' and data_create_zap LIKE '$rashod_result_row[data_create_zap]' and pol_create_zap LIKE '$rashod_result_row[pol_create_zap]'";
+    $rashod_update_result = $db->query($rashod_update);
+    if($rashod_update_result->num_rows == 1){
+
+      echo "все четко <br/>";
+    }
+    else{
+      //проверка изменения даты, если одинакове хорошо, если разные сначало отсортировать с по количеству потом отнять любой 
+      echo "XML_ID".$rashod_result_row['nomer']." -- Тут есть информация для мозга <br/>";
+    }
+  }
+}
+else{
+  echo "Нет данных";
+}
 }
 
 
