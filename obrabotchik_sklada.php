@@ -103,15 +103,20 @@ if($rashod_result->num_rows > 0) {
     $rashod_update_result = $db->query($rashod_update);
     if($rashod_update_result->num_rows == 1){
       while($rashod_update_result_row= $rashod_update_result->fetch_assoc()){
-        if($rashod_update_result_row['kolichestvo']==$rashod_result_row['kolichestvo']){
+        if($rashod_update_result_row["kolichestvo"]==$rashod_result_row["kolichestvo"]){
+
           continue;
         }
         else{
 
-          $add_rashod = "INSERT rashod VALUES (NULL,'$rashod_update_result_row[kod_material]','$rashod_update_result_row[name]','$rashod_update_result_row[nomer]','$rashod_update_result_row[kolichestvo]','$rashod_update_result_row[ed_izm]','$rashod_update_result_row[cena]','$rashod_update_result_row[summa]','$rashod_update_result_row[data_pri]','$rashod_update_result_row[sklad]','$rashod_update_result_row[data_create_zap]','$today')";
-          $db->query($add_rashod);
+          $add_rashod = "INSERT rashod VALUES ('$rashod_update_result_row[kod_material]','$rashod_update_result_row[name]','$rashod_update_result_row[nomer]','".$rashod_result_row["kolichestvo"]-$rashod_update_result_row["kolichestvo"]."','$rashod_update_result_row[ed_izm]','".$rashod_update_result_row["cena"]*($rashod_result_row["kolichestvo"]-$rashod_update_result_row["kolichestvo"])."','$rashod_update_result_row[summa]','$rashod_update_result_row[data_pri]','$rashod_update_result_row[data_ras]','$rashod_update_result_row[sklad]','$today')";
+        if ($db->query($add_rashod) === TRUE) {
+            echo "New record created successfully <br><br>";
+           }
+            else {
+              echo "Error: " . $add_prihod_upload_date . "<br>" . $db->error;
+            }
 
-        $rashod_result_row['kolichestvo']-$rashod_update_result_row['kolichestvo']." опа опа оппапа<br/>";
         }    
       }  
     }
